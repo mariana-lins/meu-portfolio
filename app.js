@@ -7,7 +7,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Meu Portfólio' });
+  res.render('index', { title: 'Meu Portfólio', nome: 'Mariana Cavalcante Lins' });
 });
 
 app.get('/projetos', (req, res) => {
