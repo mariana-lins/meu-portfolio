@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<main>
+  <h1>Meus projetos</h1>
+
+  <% if (projetos.length === 0) { %>
+    <p>Nenhum projeto cadastrado ainda.</p>
+  <% } %>
+
+  <% projetos.forEach(function(proj) { %>
+    <section>
+      <h2><%= proj.titulo %></h2>
+      <p><%= proj.descricao %></p>
+      <ul>
+        <li><strong>Tecnologias:</strong> <%= proj.tecnologias %></li>
+        <% if (proj.link) { %>
+          <li><strong>Link do projeto:</strong> <a href="<%= proj.link %>" target="_blank">Link do projeto</a></li>
+        <% } %>
+      </ul>
+    </section>
+  <% }) %>
+</main>
+
+<%- include('partials/footer') %>

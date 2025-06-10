@@ -46,6 +46,12 @@ app.post('/projetos/:id/edit', async (req, res) => {
   res.redirect('/projetos');
 });
 
+// Projetos público
+app.get('/projetos-publico', async (req, res) => {
+  const projetos = await Projeto.find();
+  res.render('projetosPublico', { title: 'Projetos', projetos });
+});
+
 // Conexão com o MongoDB 
 mongoose.connect('mongodb+srv://mmarianalinss:Msg721723@cluster0.qrro7qb.mongodb.net/meuportfolio?retryWrites=true&w=majority&appName=Cluster0', {
   // pode remover useNewUrlParser e useUnifiedTopology se quiser

@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
 <main>
-  <h1>Projetos Acadêmicos e Pessoais</h1>
+  <h1>Administração de Projetos</h1>
 
   <form action="/projetos" method="POST" style="margin-bottom:2rem;">
     <input type="text" name="titulo" placeholder="Título" required>
@@ -25,7 +25,9 @@
           <li><strong>Link do projeto:</strong> <a href="<%= proj.link %>" target="_blank">Link do projeto</a></li>
         <% } %>
       </ul>
-      <a href="/projetos/<%= proj._id %>/edit">Editar</a>
+      <form action="/projetos/<%= proj._id %>/edit" method="GET" style="display:inline;">
+        <button type="submit">Editar</button>
+      </form>
       <form action="/projetos/<%= proj._id %>/delete" method="POST" style="display:inline;">
         <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
       </form>
