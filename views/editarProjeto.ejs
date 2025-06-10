@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+<main>
+  <h1>Editar Projeto</h1>
+  <form action="/projetos/<%= projeto._id %>/edit" method="POST">
+    <input type="text" name="titulo" value="<%= projeto.titulo %>" required>
+    <input type="text" name="descricao" value="<%= projeto.descricao %>" required>
+    <input type="text" name="tecnologias" value="<%= projeto.tecnologias %>" required>
+    <input type="text" name="link" value="<%= projeto.link %>">
+    <button type="submit">Salvar Alterações</button>
+  </form>
+</main>
+<%- include('partials/footer') %>

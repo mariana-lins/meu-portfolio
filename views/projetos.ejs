@@ -25,6 +25,10 @@
           <li><strong>Repositório:</strong> <a href="<%= proj.link %>" target="_blank">Ver no GitHub</a></li>
         <% } %>
       </ul>
+      <a href="/projetos/<%= proj._id %>/edit">Editar</a>
+      <form action="/projetos/<%= proj._id %>/delete" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+      </form>
     </section>
   <% }) %>
 </main>
