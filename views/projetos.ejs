@@ -3,64 +3,30 @@
 <main>
   <h1>Projetos Acadêmicos e Pessoais</h1>
 
-  <section>
-    <h2>Portfólio Acadêmico (Este site)</h2>
-    <p>
-      Projeto de site pessoal com Node.js e EJS para apresentar trajetória acadêmica. Organizado com partials e rotas Express.
-    </p>
-    <ul>
-      <li><strong>Tecnologias:</strong> Node.js, Express, EJS</li>
-      <li><strong>Desafio:</strong> Estruturação modular e reutilizável</li>
-      <li><strong>Solução:</strong> Uso de partials e layout limpo</li>
-      <li><strong>Repositório:</strong> <a href="https://github.com/mariana-lins/meu-portfolio">Link para GitHub</a></li>
-    </ul>
-  </section>
+  <form action="/projetos" method="POST" style="margin-bottom:2rem;">
+    <input type="text" name="titulo" placeholder="Título" required>
+    <input type="text" name="descricao" placeholder="Descrição" required>
+    <input type="text" name="tecnologias" placeholder="Tecnologias" required>
+    <input type="text" name="link" placeholder="Link do repositório (opcional)">
+    <button type="submit">Cadastrar Projeto</button>
+  </form>
 
-  <section>
-    <h2>PontoLog - CodeDontBlow</h2>
-    <p>
-        Plataforma web que disponibilize informações sobre o desempenho dos Estados Brasileiros no comércio exterior , com base nos dados abertos do Ministério do Desenvolvimento, Indústria, Comércio e Serviços.
-    </p>
-    <ul>
-      <li><strong>Tecnologias:</strong> JavaScript, TypeScript, Python, React, MySql</li>
-      <li><strong>Solução:</strong> Essa ferramenta fornecerá aos tomadores de decisão dados claros e acessíveis, permitindo a identificação de municípios que estejam em ascensão, estagnação ou declínio no mercado internacional.</li>
-    </ul>
-  </section>
+  <% if (projetos.length === 0) { %>
+    <p>Nenhum projeto cadastrado ainda.</p>
+  <% } %>
 
-  <section>
-    <h2>Monitoramento de Plantas (Em desenvolvimento)</h2>
-    <p>
-      Sistema inteligente para monitorar hortas e plantações domésticas. 
-    </p>
-    <ul>
-      <li><strong>Tecnologias:</strong> Arduino (linguagem C++), Python, React Native </li>
-      <li><strong>Objetivo:</strong> Criar um sistema de monitoramento doméstico de umidade do solo</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Outros projetos em equipe - CodeDontBlow</h2>
-    <p>
-      Contribuições e projetos de aprendizado disponíveis no repositório <a href="https://github.com/CodeDontBlow" target="_blank">CodeDontBlow</a>.
-    </p>
-    <ul>
-      <li><strong>Projetos:</strong> Diversos projetos voltados para aprendizado e prática de desenvolvimento de software do curso de ADS.</li>
-      <li><strong>Repositório:</strong> <a href="https://github.com/CodeDontBlow" target="_blank">github.com/CodeDontBlow</a></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>VI Expedição Científica do Baixo São Francisco</h2>
-    <p>
-      Participação na produção do material para a VI Expedição Científica do Baixo São Francisco, organizada pela UFAL, representando o IBGE. A expedição percorreu cerca de 240 km entre os estados de Alagoas e Sergipe, promovendo ações de letramento geográfico e estatístico em comunidades ribeirinhas.
-    </p>
-    <ul>
-      <li><strong>Atividades:</strong> Criação de mapas para material educacional.</li>
-      <li><strong>Período:</strong> 21 a 30 de novembro de 2023</li>
-      <li><strong>Livro publicado:</strong> <a href="https://ufal.br/ufal/pesquisa-e-inovacao/programas/expedicao-cientifica-do-rio-sao-francisco/publicacoes/e-books/perfil-socioeconomico-bsf-2023.pdf/@@download/file/PERFIL%20SOCIOECONOMICO%20BSF%202023.pdf" target="_blank">pdf</a></li>
-      <li><strong>Mais informações:</strong> <a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/38415-ibge-embarca-na-vi-expedicao-cientifica-do-baixo-sao-francisco-e-leva-cidadania-para-comunidades-ribeirinhas" target="_blank">Agência de Notícias IBGE</a></li>
-    </ul>
-  </section>
+  <% projetos.forEach(function(proj) { %>
+    <section>
+      <h2><%= proj.titulo %></h2>
+      <p><%= proj.descricao %></p>
+      <ul>
+        <li><strong>Tecnologias:</strong> <%= proj.tecnologias %></li>
+        <% if (proj.link) { %>
+          <li><strong>Repositório:</strong> <a href="<%= proj.link %>" target="_blank">Ver no GitHub</a></li>
+        <% } %>
+      </ul>
+    </section>
+  <% }) %>
 </main>
 
 <%- include('partials/footer') %>
